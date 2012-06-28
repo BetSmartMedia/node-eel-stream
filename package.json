@@ -1,0 +1,20 @@
+{
+  "author": "Stephen Sugden <stephen@betsmartmedia.com>",
+  "name": "eel-stream",
+  "description": "Send eel logs to a writable stream",
+  "version": "0.0.0",
+	"tags": [ "logging" ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BetSmartMedia/node-eel-stream.git"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {"eel": "*"},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
