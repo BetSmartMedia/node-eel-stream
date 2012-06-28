@@ -1,7 +1,5 @@
 # eel-stream - EventEmitter logging -> writeable streams [![Build Status](https://secure.travis-ci.org/BetSmartMedia/node-eel-stream.png?branch=master)](http://travis-ci.org/BetSmartMedia/node-eel-stream)
 
-
-
 An incredibly simple module, just 6 lines:
 
 ```javascript
