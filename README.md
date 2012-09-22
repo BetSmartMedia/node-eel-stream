@@ -16,21 +16,22 @@ module.exports = function (formatter, stream) {
 
 Install it like this:
 
-   npm install eel-stream
+    npm install eel-stream
 
 Use it like this:
 
-```
-fs  = require('fs')
-log = require('eel')
+```javascript
+var fs  = require('fs')
+var log = require('eel')
+var handler = require('eel-stream')(JSON.stringify, fs.createWriteStream(__dirname+'/myapp.log'))
 
-log.on('entry', require('eel-stream')(JSON.stringify, fs.createWriteStream(__dirname+'/myapp.log')))
+log.on('entry', handler)
 
 log('test1', {ok: true})
 log('test2', {ok: false})
 ```
 
-And get log entries like this:
+And get log entries like this in `myapp.log`:
 
 	{"type":"test1","level":"info","timestamp":"2012-06-28T18:48:01.249Z","ok":true}
 	{"type":"test2","level":"info","timestamp":"2012-06-28T18:48:01.250Z","ok":false}
