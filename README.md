@@ -1,6 +1,7 @@
 # eel-stream - EventEmitter logging -> writeable streams [![Build Status](https://secure.travis-ci.org/BetSmartMedia/node-eel-stream.png?branch=master)](http://travis-ci.org/BetSmartMedia/node-eel-stream)
 
-An incredibly simple module, just 6 lines:
+An incredibly simple module for directing logs from [eel](https://github.com/BetSmartMedia/node-eel)
+to a writeable stream, just 6 lines:
 
 ```javascript
 module.exports = function (formatter, stream) {
@@ -23,18 +24,19 @@ Use it like this:
 ```javascript
 var fs  = require('fs')
 var log = require('eel')
-var handler = require('eel-stream')(JSON.stringify, fs.createWriteStream(__dirname+'/myapp.log'))
+var stream = fs.createWriteStream(__dirname+'/myapp.log')
+var handler = require('eel-stream')(JSON.stringify, stream)
 
 log.on('entry', handler)
 
 log('test1', {ok: true})
-log('test2', {ok: false})
+log.error('test2', {ok: false})
 ```
 
 And get log entries like this in `myapp.log`:
 
 	{"type":"test1","level":"info","timestamp":"2012-06-28T18:48:01.249Z","ok":true}
-	{"type":"test2","level":"info","timestamp":"2012-06-28T18:48:01.250Z","ok":false}
+	{"type":"test2","level":"error","timestamp":"2012-06-28T18:48:01.250Z","ok":false}
 
 ## Parameters
 
